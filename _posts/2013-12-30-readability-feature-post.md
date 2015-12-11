@@ -5,6 +5,8 @@ description: "Custom written post descriptions are the way to go... if you're no
 category: Sample-Posts
 tags: [sample post, readability]
 modified: 2013-06-30
+location:
+ name:  paris, france
 
 imagefeature: tokyo.jpg
 comments: true

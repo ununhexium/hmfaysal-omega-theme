@@ -3849,7 +3849,7 @@ body {
 a#slide{
     position:fixed;
     display:block;
-    width:40px;
+    width:100px;
     height:40px;
     top:10px;
     left:10px;
@@ -3866,7 +3866,7 @@ a#slide:hover{
     }
 
 a#slide:after{
-    content:"F"
+    content:"Menu"
     }
 
 a#slide.slide:after{

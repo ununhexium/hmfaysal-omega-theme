@@ -9,6 +9,23 @@ IP:=$(shell ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 
 RSYNC_OPT=--no-perms --no-owner --no-group --verbose --recursive --update
 
+default: info
+	@echo 
+	@echo "all:      clean, img, build, upload"
+	@echo "build:    builds the web site"
+	@echo "clean:    removes generated files"
+	@echo "img:      fetches images from hubic and puts them in the $(DIR)/images folder"
+	@echo "info:     displays the above information"
+	@echo "server:   starts the jekyll local server"
+	@echo "upload:   uploads the website to $(SERVER)"
+
+build:
+	cd $(DIR); jekyll build
+
+clean:
+	cd $(DIR); rm -rf "_site"
+	cd $(DIR)/_plugins; rm jekyll_geocache.json
+
 get-img:
 	rsync $(RSYNC_OPT) $(IMG_REMOTE) $(IMG_LOCAL)
 
@@ -21,9 +38,6 @@ info:
 	@echo Makefile directory "$(DIR)"
 	@echo Local images dir "$(IMG_LOCAL)"
 	@echo Backed images dir "$(IMG_REMOTE)"
-
-build:
-	cd $(DIR); jekyll build
 
 serve: server
 
