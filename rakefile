@@ -15,6 +15,7 @@ end
 
 def defaults()
   defaults=Hash.new
+  defaults[:id]="Time.now.to_i"
   defaults[:title]="New post title"
   defaults[:layout]="post"
   defaults[:type]=""

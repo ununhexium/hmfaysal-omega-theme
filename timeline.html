@@ -1,5 +1,5 @@
 ---
-layout: pageminimal
+layout: page
 title: Timeline
 permalink: /timeline/index.html
 tags: [Timeline]
@@ -19,15 +19,15 @@ imagefeature: lipsum/vaticano.jpg
       <!-- ids are forbidden here as this content may be included at several locations on the same page -->
       <!-- this line is 1 article element and its class is used to identify it -->
       <li class="article-{{ post.category }}">
-        {% if post.background %}
-        <div class="article-background article-background-{{ post.background }}"></div>
+        {% if post.imagefeature %}
+        <div class="article-background article-background-{{ post.id }}"></div>
         {% else %}
         <div class="article-background"></div>
         {% endif %}
         <div class="article-panel">
           <div class="article-heading">
             <h4 class="article-title">
-              <span class="flag-icon flag-icon-{{ post.countrycode }}"></span>{{ post.title }}
+              <span class="flag-icon flag-icon-{{ post.location.countrycode }}"></span>{{ post.title }}
             </h4>
             <!-- second title, to have the original name for instance -->
             {% if post.subtitle %}
