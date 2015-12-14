@@ -1,0 +1,93 @@
+---
+layout: default
+title: Timeline
+permalink: /timeline/index.html
+tags: [Timeline]
+description: "A timeline of my travel."
+
+---
+
+
+<div class="timeline_div">
+
+  <h1 class="page-heading">{{ title }}</h1>
+
+  <ul class="timeline">
+
+    {% for post in site.posts %}
+
+      <!-- ids are forbidden here as this content may be included at several locations on the same page -->
+      <!-- this line is 1 article element and its class is used to identify it -->
+      <li class="article-{{ post.category }}">
+        <div class="badge">
+          <i class="glyphicon glyphicon-{{ post.badge }}"></i>
+        </div>
+        {% if post.background %}
+        <div class="article-background article-background-{{ post.background }}"></div>
+        {% else %}
+        <div class="article-background"></div>
+        {% endif %}
+        <div class="article-panel">
+          <div class="article-heading">
+            <h4 class="article-title">
+              <span class="flag-icon flag-icon-{{ post.countrycode }}"></span>{{ post.title }}
+            </h4>
+            <!-- second title, to have the original name for instance -->
+            {% if post.subtitle %}
+            <h4 class="article-title">{{ post.subtitle }}</h4>
+            {% endif %}
+            <p>
+              <!-- title complementary info -->
+              {% capture nowunix %}{{'now' | date: '%s'}}{% endcapture %}
+              {% capture posttime %}{{post.date | date: '%s'}}{% endcapture %}
+              {% if posttime < nowunix %}
+              <small><i class="glyphicon glyphicon-time"></i>{{ post.date | date: "%b %-d, %Y" }}</small>
+              {% else %}
+              <small><i class="glyphicon glyphicon-time"></i>{{ post.date | date: "%B %Y" }}</small>
+              {% endif %}
+            </p>
+          </div>
+          <!-- summary of the article -->
+          <div class="article-abstract">
+            <p>{{ post.abstract }}</p>
+          </div>
+          <!-- content of the article -->
+          <div class="article-body">
+            {{ post.content }}
+          </div>
+	  <div class="article-buttons">
+            <!-- to show the user where the location is -->
+            {% if post.address %}
+            <div class="article-map">
+              <!-- pay attention to use something valid for the address -->
+              <button
+                type="button"
+                class="btn btn-info btn-xs googlemapbutton"
+                data-toggle="modal"
+                data-target="#map_modal"
+                address="{{ post.address }}">
+                <span class="glyphicon glyphicon-map-marker"></span>
+              </button>
+            </div>
+            {% endif %}
+            {% if posttime < nowunix %}
+            <div class="article-view">
+              <a
+                class="btn btn-info btn-xs"
+                href="{{ post.url }}">
+                <span class="glyphicon glyphicon-eye-open"></span>
+              </a>
+            </div>
+            {% endif %}
+          <div class="article-more"></div>
+	  </div>
+        </div> <!-- background image set in css/background.css -->
+      </li>
+      
+
+
+    {% endfor %}
+
+  </ul>
+
+</div>
