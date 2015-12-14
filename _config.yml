@@ -56,6 +56,8 @@ links:
     icon: home
   - title: <i class="icon-book"></i> Documentation
     url: /documentation
+  - title: Timeline
+    url: /timeline
   - title: Categories
     url: /categories
   - title: Tags

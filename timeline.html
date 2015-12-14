@@ -1,10 +1,10 @@
 ---
-layout: default
+layout: pageminimal
 title: Timeline
 permalink: /timeline/index.html
 tags: [Timeline]
 description: "A timeline of my travel."
-
+imagefeature: lipsum/vaticano.jpg
 ---
 
 
@@ -19,9 +19,6 @@ description: "A timeline of my travel."
       <!-- ids are forbidden here as this content may be included at several locations on the same page -->
       <!-- this line is 1 article element and its class is used to identify it -->
       <li class="article-{{ post.category }}">
-        <div class="badge">
-          <i class="glyphicon glyphicon-{{ post.badge }}"></i>
-        </div>
         {% if post.background %}
         <div class="article-background article-background-{{ post.background }}"></div>
         {% else %}
