@@ -4,8 +4,7 @@ IMG_REMOTE=$(HOME)/hubic/Data/rtw/img/
 IMG_LOCAL=$(DIR)/images/
 SERVER=lab0.net
 SERVER_USER=ununhexium
-# := evaluates only once
-IP:=$(shell ifconfig eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
+include env
 
 RSYNC_OPT=--no-perms --no-owner --no-group --verbose --recursive --update
 
