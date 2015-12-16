@@ -12,6 +12,15 @@
            <li><a href="{{ site.url }}/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
     </nav>
 
+{% if site.revolvermapid %}
+    <div id="revolvermap">
+      <script 
+        type="text/javascript"
+        src="//ra.revolvermaps.com/0/0/5.js?i={{ site.revolvermapid }}&amp;m=7&amp;s=180&amp;c=7f4682&amp;cr1=ffffff&amp;rs=100&amp;as=50&amp;cr0=7f4682" async="async">
+      </script>
+    <p>Visitor's location</p>
+    </div>
+{% endif %}
 
 </aside>
 

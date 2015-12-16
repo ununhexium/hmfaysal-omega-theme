@@ -18,12 +18,14 @@ default: info
 	@echo "server:   starts the jekyll local server"
 	@echo "upload:   uploads the website to $(SERVER)"
 
+all: clean upload
+
 build:
 	cd $(DIR); jekyll build
 
 clean:
 	cd $(DIR); rm -rf "_site"
-	cd $(DIR)/_plugins; rm jekyll_geocache.json
+	cd $(DIR)/_plugins; rm -f jekyll_geocache.json
 
 get-img:
 	rsync $(RSYNC_OPT) $(IMG_REMOTE) $(IMG_LOCAL)

@@ -6,6 +6,8 @@ disqus_shortname: uuh116
 default_bg:       jp/sensouji.jpg
 search:           true
 share:            true
+# Shows the map in the side menu if set
+revolvermapid:    0cgz1jlq04b
 # Read Time is a calculator tp provide post read-time based on word count. Usage is recommended.
 readtime:         true
 # Specify the average Words per minute. If not defined, 180 will be used
