@@ -165,34 +165,27 @@ function initializeGoogleMaps() {
   g.modalmap = new google.maps.Map(document.getElementById('map_div'), mapOptions);
   
   mapOptions.mapTypeId = google.maps.MapTypeId.ROADMAP
-  mapOptions.zoom = 1;
+  mapOptions.zoom = 2;
   g.roadmap = new google.maps.Map(document.getElementById('roadmap_canevas'), mapOptions);
 
   /*
    * The road
-   * TODO: geocode instead of manual input:
-   * http://gis.stackexchange.com/questions/22108/how-to-geocode-300-000-addresses-on-the-fly
    */
 
   var roadmap_data = new Array();
   var future_roadmap_data = new Array();
 
-  {% capture nowunix %}{{'now' | date: '%Y-%M-%d-%H'}}{% endcapture %}
+  {% capture nowunix %}{{'now' | date: '%Y-%m-%d-%H'}}{% endcapture %}
   {% for post in site.posts reversed %}
-    {% capture posttime %}{{ post.date | date: '%Y-%M-%d-%H'}}{% endcapture %}
-    {% if post.lat and post.lng and posttime < nowunix %}
-      roadmap_data.push(new google.maps.LatLng({{ post.lat }}, {{ post.lng }}));
-      {% capture lastentry %}push(new google.maps.LatLng({{ post.lat }}, {{ post.lng }}));{% endcapture %}
-    {% else %}
-    {% if post.lat and post.lng %}
-      {% if lastentry contains 'push' %}
-        future_roadmap_data.{{lastentry}}
-        {% capture lastentry %}'empty'{% endcapture %}
+    {% capture posttime %}{{ post.date | date: '%Y-%m-%d-%H'}}{% endcapture %}
+    {% if post.location.lat and post.location.lng %}
+      {% if posttime < nowunix %}
+        roadmap_data.push(new google.maps.LatLng({{ post.location.lat }}, {{ post.location.lng }}));
+      {% else %}
+        future_roadmap_data.push(new google.maps.LatLng({{ post.location.lat }}, {{ post.location.lng }}));
       {% endif %}
-      future_roadmap_data.push(new google.maps.LatLng({{ post.lat }}, {{ post.lng }}));
     {% endif %}
-    {% endif %}
-    /* {{ posttime }} < {{ nowunix }} */
+    /* {{ post.title }}  {{ posttime }} < {{ nowunix }} */
   {% endfor %}
 
   // Define a symbol using SVG path notation, with an opacity of 1.
@@ -211,11 +204,13 @@ function initializeGoogleMaps() {
     strokeWeight: 4
   });
 
+  console.debug(roadmap_data);
+
   var future_path = new google.maps.Polyline({
     path: future_roadmap_data,
     geodesic: true,
-    strokeColor: '#009999',
-    strokeOpacity: 0.0,
+    strokeColor: '#ff0000',
+    strokeOpacity: 1.0,
     strokeWeight: 2,
     icons: [{
       icon: lineSymbol,

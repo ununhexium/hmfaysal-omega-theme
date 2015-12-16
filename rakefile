@@ -3,14 +3,19 @@
 desc "Start a new post"
 task :new do |t, args|
   params = defaults
-  params.each do |k, v|
-   puts "#{k} [#{v}]?"
-   n = $stdin.gets.chomp
-   if not n.nil? and not n.empty?
-     params[k]=n
-   end
- end
- generate params
+  puts "Title?"
+  v = $stdin.gets.chomp
+  unless v.nil? or v.empty?
+    params[:title]=v
+  end
+
+  puts "Date? [#{params[:modified]}]"
+  v = $stdin.gets.chomp
+  unless v.nil? or v.empty?
+    params[:modified]=v
+  end
+
+  generate params
 end
 
 def defaults()
@@ -19,19 +24,19 @@ def defaults()
   defaults[:title]="New post title"
   defaults[:layout]="post"
   defaults[:type]=""
-  defaults[:description]=""
+  defaults[:description]="Some description"
   defaults[:headline]=""
   defaults[:modified]="#{Time.now.strftime('%Y-%m-%d')}"
   defaults[:category]="personal"
-  defaults[:tags]="[]"
-  defaults[:location]=""
+  defaults[:tags]=['tag1', 'tag2']
+  defaults[:location]=Hash["name" => "north pole"]
   defaults[:imagefeature]=""
   defaults[:comments]="true"
   defaults
 end
 
 def generate(args)
-  filename = "_posts/#{defaults[:modified]}-#{args[:title].downcase.gsub(/&/,'and').gsub(/[,'":\?!\(\)\[\]]/,'').gsub(/[\W\.]/, '-').gsub(/-+$/,'')}.md"
+  filename = "_posts/#{args[:modified]}-#{args[:title].downcase.gsub(/&/,'and').gsub(/[,'":\?!\(\)\[\]]/,'').gsub(/[\W\.]/, '-').gsub(/-+$/,'')}.md"
   puts "Creating new post: #{filename}"
   if File.file? filename
     fail "The file already exists"
@@ -39,7 +44,23 @@ def generate(args)
   open(filename, 'w') do |post|
     post.puts "---"
     args.each do |k, v|
-      post.puts "#{k}: #{v}"
+
+      if v.is_a?(Array)
+        post.puts "#{k}:"
+        v.each do |e|
+          post.puts " - #{e}"
+        end
+
+      elsif v.is_a?(Hash)
+        post.puts "#{k}:"
+        v.each do |a, z|
+          post.puts " #{a}: #{z}"
+        end
+
+      else
+        post.puts "#{k}: #{v}"
+      end
+
     end
     post.puts ""
     post.puts "---"
