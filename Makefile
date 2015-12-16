@@ -15,6 +15,7 @@ default: info
 	@echo "clean:    removes generated files"
 	@echo "img:      fetches images from hubic and puts them in the $(DIR)/images folder"
 	@echo "info:     displays the above information"
+	@echo "local:    cleans and builds a local site"
 	@echo "server:   starts the jekyll local server"
 	@echo "upload:   uploads the website to $(SERVER)"
 
@@ -24,14 +25,12 @@ build:
 	cd $(DIR); jekyll build
 
 clean:
-	cd $(DIR); rm -rf "_site"
+	cd $(DIR); rm -rf _site
+	cd $(DIR); rm -rf images
 	cd $(DIR)/_plugins; rm -f jekyll_geocache.json
 
 get-img:
 	rsync $(RSYNC_OPT) $(IMG_REMOTE) $(IMG_LOCAL)
-
-put-img:
-	rsync $(RSYNC_OPT) $(IMG_LOCAL) $(IMG_REMOTE)
 
 img: get-img
 
@@ -39,6 +38,12 @@ info:
 	@echo Makefile directory "$(DIR)"
 	@echo Local images dir "$(IMG_LOCAL)"
 	@echo Backed images dir "$(IMG_REMOTE)"
+
+local: clean img build
+	
+
+put-img:
+	rsync $(RSYNC_OPT) $(IMG_LOCAL) $(IMG_REMOTE)
 
 serve: server
 

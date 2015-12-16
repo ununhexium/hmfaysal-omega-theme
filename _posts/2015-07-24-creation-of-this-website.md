@@ -6,10 +6,9 @@ type: status
 description: Creation of lab0.net's new blog
 headline: 
 modified: 2015-07-25
-category: personal
+category: tech
 tags: 
- - creation
- - blog
+ - jekyll
 location: 
  name: Frankfurt-Nieder-Eschbach
 imagefeature: background/heim.jpg
