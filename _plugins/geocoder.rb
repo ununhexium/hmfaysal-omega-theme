@@ -21,12 +21,10 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
       result = JSON.parse(open(url).read)
       loc = result['results'][0]['geometry']['location'] rescue 'none'
 
-      puts loc
       # get the country from the location
       url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=#{loc['lat']},#{loc['lng']}&sensor=false"
       result = JSON.parse(open(url).read)
       countries = result['results'][0]['address_components'].select{|x| x['types'].include? 'country'}
-      puts countries
       unless countries.empty?
         countrycode = countries[0]['short_name']
         loc['countrycode'] = countrycode.downcase
@@ -36,7 +34,6 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
       update_geo_cache!
     end
     data['location'].merge!(loc) if loc != 'none'
-    puts data
   end
 end
 

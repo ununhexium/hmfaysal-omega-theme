@@ -1,6 +1,14 @@
 ---
 ---
 
+@mixin filter($filter) {
+  -webkit-filter: $filter;
+     -moz-filter: $filter;
+      -ms-filter: $filter;
+          filter: $filter;
+}
+
 @import 'menu';
 @import 'style';
+@import 'timeline';
 

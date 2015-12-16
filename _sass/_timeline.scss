@@ -11,6 +11,11 @@
   text-align: center;
 }
 
+.timeline li>a {
+  display: block;
+  color: black;
+}
+
 .timeline:before {
   top: 0;
   bottom: 0;
@@ -45,7 +50,7 @@
   clear: both;
 }
 
-.timeline>li>.article-panel {
+.timeline>li>a>.article-panel {
   width: 46%;
   height: 200px;
   float: left;
@@ -57,7 +62,7 @@
   border: 1px solid gray;
 }
 
-.timeline>li>.article-background {
+.timeline>li>a>.article-background {
   width: 46%;
   height: 200px;
   float: left;
@@ -66,63 +71,63 @@
   background-repeat: no-repeat;
   background-position: center center;
   opacity: 0.5;
-  -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
+  @include filter(blur(5px));
   overflow: hidden;
   z-index: -1;
+}
+
+.timeline>li>a>.article-background-grayed {
+  @include filter(grayscale(100%) blur(5px));
 }
 
 i {
   margin: 0;
 }
 
-.timeline>li .article-buttons {
+.timeline>li>a .article-buttons {
   position: absolute;
   bottom: 5px;
   right: 5px;
   float: right;
 }
 
-.timeline>li .article-buttons:hover {
+.timeline>li>a .article-buttons:hover {
   opacity:1.0;
 }
 
-.timeline>li .article-map, .timeline>li .article-view {
+.timeline>li>a .article-map, .timeline>li>a .article-view {
   display:inline-block;
 }
 
-.timeline>li .article-map:hover {
+.timeline>li>a .article-map:hover {
   opacity:1.0;
   display:inline-block;
 }
 
-.timeline>li .article-more {
+.timeline>li>a .article-more {
   display:inline-block;
 }
 
-.timeline>li:nth-child(even)>.article-panel, .timeline>li:nth-child(even)>.article-background {
+.timeline>li:nth-child(even)>a>.article-panel, .timeline>li:nth-child(even)>a>.article-background {
   float: right;
   left: 46%;
 }
 
-.timeline>li:nth-child(even)>.article-panel:before {
+.timeline>li:nth-child(even)>a>.article-panel:before {
   border-left-width: 0;
   border-right-width: 15px;
   left: -15px;
   right: auto;
 }
 
-.timeline>li:nth-child(even)>.article-panel:after {
+.timeline>li:nth-child(even)>a>.article-panel:after {
   border-left-width: 0;
   border-right-width: 14px;
   left: -14px;
   right: auto;
 }
 
-.timeline>li:nth-child(even) .article-buttons {
+.timeline>li:nth-child(even)>a .article-buttons {
   position: absolute;
   bottom: 5px;
   left: 5px;
@@ -180,16 +185,16 @@ i {
   ul.timeline:before {
     left: 40px;
   }
-  ul.timeline>li>.article-panel, ul.timeline>li>.article-background {
+  ul.timeline>li>a>.article-panel, ul.timeline>li>a>.article-background {
     width: 100%;
     right: unset;
     left: unset;
   }
-  .timeline>li:nth-child(even)>.article-panel, .timeline>li:nth-child(even)>.article-background {
+  .timeline>li:nth-child(even)>a>.article-panel, .timeline>li:nth-child(even)>a>.article-background {
     float: left;
     left: 0;
   }
-  ul.timeline>li>.article-background {
+  ul.timeline>li>a>.article-background {
     height: 200px;
     position: absolute;
     float: left;
@@ -198,24 +203,20 @@ i {
     background-repeat: no-repeat;
     background-position: center center;
     opacity: 0.5;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
+    @include filter(blur(5px));
     overflow: hidden;
     z-index: -1;
   }
-  ul.timeline>li>.article-panel {
+  ul.timeline>li>a>.article-panel {
     float: right;
   }
-  ul.timeline>li>.article-panel:before {
+  ul.timeline>li>a>.article-panel:before {
     border-left-width: 0;
     border-right-width: 15px;
     left: -15px;
     right: auto;
   }
-  ul.timeline>li>.article-panel:after {
+  ul.timeline>li>a>.article-panel:after {
     border-left-width: 0;
     border-right-width: 14px;
     left: -14px;
