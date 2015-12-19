@@ -1,7 +1,7 @@
 DIR:=$(strip $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))))
 
 IMG_REMOTE=$(HOME)/hubic/Data/rtw/img/
-IMG_LOCAL=$(DIR)/images/
+IMG_LOCAL=$(DIR)/_src_images/
 SERVER=lab0.net
 SERVER_USER=ununhexium
 include env
@@ -27,12 +27,20 @@ build:
 clean:
 	cd $(DIR); rm -rf _site
 	cd $(DIR); rm -rf images
+	cd $(DIR); rm -rf $(IMG_LOCAL)/src
+	cd $(DIR); rm -rf $(IMG_LOCAL)/orig 
+	cd $(DIR); rm -rf $(IMG_LOCAL)/scale 
+	cd $(DIR); rm -rf $(IMG_LOCAL)/icon
 	cd $(DIR)/_plugins; rm -f jekyll_geocache.json
 
-get-img:
+img: img-get img-process
+
+img-get:
+	mkdir -p "$(IMG_LOCAL)"
 	rsync $(RSYNC_OPT) $(IMG_REMOTE) $(IMG_LOCAL)
 
-img: get-img
+img-process:
+	_scripts/img-process.zsh "$(IMG_LOCAL)" "$(DIR)/images"
 
 info:
 	@echo Makefile directory "$(DIR)"

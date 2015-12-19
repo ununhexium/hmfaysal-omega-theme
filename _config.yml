@@ -1,9 +1,9 @@
 title:            Towards the Rising Sun
 description:      "My trip towards Japan"
-logo:             icons/solarrays.png
+logo:             orig/misc/solarrays.png
 disqus_shortname: uuh116
 # Assign a default image for your site's header and footer
-default_bg:       jp/sensouji.jpg
+default_bg:       orig/jp/sensouji.jpg
 search:           true
 share:            true
 # Shows the map in the side menu if set
@@ -11,7 +11,7 @@ revolvermapid:    0cgz1jlq04b
 # Read Time is a calculator tp provide post read-time based on word count. Usage is recommended.
 readtime:         true
 # Specify the average Words per minute. If not defined, 180 will be used
-wpm:				      150
+wpm:				    180
 # Turn on or off the fin animations in the header and footer
 triangleheader:		true
 animated_fins:	  true
@@ -25,7 +25,7 @@ url:
 # Owner/author information
 owner:
   name:           Christophe '116' Loiseau
-  avatar:         icons/116_64.jpg
+  avatar:         icon/64/misc/116.jpg
   email:          116@lab0.net
   # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
   description:    Hello, my name is Christophe and I created this web site to let you follow my trip towards Japan. I&#39;ll post stuff as regularly as possible in there, so you can follow my trip to the other side of the world. Hoping that you will enjoy visiting this site as much as I enjoy my trip.
@@ -208,3 +208,5 @@ prose:
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules", "Makefile"]
+
+
