@@ -8,6 +8,8 @@ $(document).ready(function() {
   addGoogleMapListener();
   addGoogleMapModalListener();
   initTimelineHover();
+  $('.cycle').cyclotron();
+  $(".cycle").css('cursor', 'url(http://i.imgur.com/FrQFOJo.png),auto');
 });
 
 function initTimelineHover(){
