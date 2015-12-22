@@ -56,7 +56,7 @@ put-img:
 serve: server
 
 server:
-	cd $(DIR); jekyll server --host $(IP) --baseurl ''
+	cd $(DIR); jekyll --config "$(DIR)/_config.yml,$(DIR)/_config.local.yml" server --host $(IP) --baseurl ''
 
 upload: img build
 	@echo Upload to $(SERVER_USER)@$(SERVER)

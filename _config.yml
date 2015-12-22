@@ -1,9 +1,9 @@
 title:            Towards the Rising Sun
 description:      "My trip towards Japan"
-logo:             orig/misc/solarrays.png
+logo:             misc/solarrays.png
 disqus_shortname: uuh116
 # Assign a default image for your site's header and footer
-default_bg:       orig/jp/sensouji.jpg
+default_bg:       jp/sensouji.jpg
 search:           true
 share:            true
 # Shows the map in the side menu if set
@@ -20,7 +20,7 @@ fin_color:        "255,255,255"
 # Change url to your domain. Leave localhost server or blank when working locally.
 # or use the hint from http://jekyllrb.com/docs/github-pages/ to keep this the same 
 # whether working locally or remotely. Start Jekyll with: jekyll serve --baseurl ''
-url:       		   
+url:       		   http://lab0.net/blog
 
 # Owner/author information
 owner:
