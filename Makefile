@@ -28,7 +28,6 @@ clean:
 	cd $(DIR); rm -rf _site
 	cd $(DIR); rm -rf images
 	cd $(DIR); rm -rf $(IMG_LOCAL)/src
-	cd $(DIR); rm -rf $(IMG_LOCAL)/orig 
 	cd $(DIR); rm -rf $(IMG_LOCAL)/scale 
 	cd $(DIR); rm -rf $(IMG_LOCAL)/icon
 	cd $(DIR)/_plugins; rm -f jekyll_geocache.json
@@ -59,6 +58,9 @@ server:
 	cd $(DIR); jekyll --config "$(DIR)/_config.yml,$(DIR)/_config.local.yml" server --host $(IP) --baseurl ''
 
 upload: img build
+	@echo Clean and rebuild with the prod config
+	cd $(DIR); rm -rf _site
+	cd $(DIR); jekyll build
 	@echo Upload to $(SERVER_USER)@$(SERVER)
-	rsync --delete -vr $(DIR)/_site/ $(SERVER_USER)@$(SERVER):/home/$(SERVER_USER)/html/
+	rsync --delete -vr $(DIR)/_site/ $(SERVER_USER)@$(SERVER):/home/$(SERVER_USER)/html/blog/
 
