@@ -4,7 +4,7 @@
 {% for post in site.posts %}
   {% if post.imagefeature %}
     .article-background-{{ post.id }} {
-      background-image: url('../../images/{{ post.imagefeature }}');
+      background-image: url('../../images/scale/{{ post.imagefeature }}');
     }
   {% endif %}
 {% endfor %}

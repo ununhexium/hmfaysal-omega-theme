@@ -66,7 +66,13 @@ done
 
 cd "$SRC"
 # LAST STEP, copy all the data to the final folders
-for d in orig scale icon; do
+
+mkdir -p "$DST"
+for f in $(ls "$SRC/orig"); do
+  cp -rfvu "$SRC/orig/$f" "$DST";
+done
+
+for d in scale icon; do
   mkdir -p "$DST/$d"
   cp -rufv "$SRC/$d" "$DST"
 done
