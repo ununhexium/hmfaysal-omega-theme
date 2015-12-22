@@ -55,7 +55,7 @@ put-img:
 serve: server
 
 server:
-	cd $(DIR); jekyll --config "$(DIR)/_config.yml,$(DIR)/_config.local.yml" server --host $(IP) --baseurl ''
+	cd $(DIR); jekyll server --config "$(DIR)/_config.yml,$(DIR)/_config.local.yml" --host $(IP) --baseurl ''
 
 upload: img build
 	@echo Clean and rebuild with the prod config
