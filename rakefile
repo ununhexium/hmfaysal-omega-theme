@@ -65,8 +65,8 @@ def generate(args)
     post.puts ""
     post.puts "---"
     post.puts ""
-    post.puts """<figure class="">"""
-    post.puts """  <a href="/images/X.jpg"><img src="/images/scale/X.jpg"/></a>"""
+    post.puts '<figure class="">'
+    post.puts '  <a href="/images/X.jpg"><img src="/images/scale/X.jpg"/></a>'
     post.puts "  <figcaption></figcaption>"
     post.puts "</figure>"
   end
