@@ -21,7 +21,7 @@ for d in $(find . -mindepth 1 -maxdepth 1 -not -name 'orig' -not -name 'scale' -
   cp -ruv "$d" src
 done
 
-MAX_FILE_SIZE=8000000
+MAX_FILE_SIZE=13000000
 MAX_MEMORY_SIZE=512MiB
 
 # STEP 1: Rotate all images using EXIF data
@@ -35,7 +35,8 @@ for f in $(find . -type f -iname '*.jpg' -o -iname ''); do
   # skip big files on dell mini
   s=$(wc -c < "$f")
   if [[ $s -ge $MAX_FILE_SIZE ]]; then
-    echo Skip $f too big: $s
+    echo Skip rotate on $f too big: $s
+    cp $f $d
     continue
   fi
   echo "Rotate $f -> $d"
