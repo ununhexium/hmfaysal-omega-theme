@@ -62,5 +62,5 @@ upload: img build
 	cd $(DIR); rm -rf _site
 	cd $(DIR); jekyll build
 	@echo Upload to $(SERVER_USER)@$(SERVER)
-	rsync --delete -vr $(DIR)/_site/ $(SERVER_USER)@$(SERVER):/home/$(SERVER_USER)/html/blog/
+	rsync --delete -vr $(DIR)/_site/ $(SERVER_USER)@$(SERVER):/home/$(SERVER_USER)/html/
 

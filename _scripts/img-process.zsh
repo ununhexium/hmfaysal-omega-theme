@@ -23,6 +23,7 @@ done
 
 MAX_FILE_SIZE=13000000
 MAX_MEMORY_SIZE=512MiB
+ORIG_SIZE=1000
 
 # STEP 1: Rotate all images using EXIF data
 cd "$SRC/src"
@@ -39,9 +40,12 @@ for f in $(find . -type f -iname '*.jpg' -o -iname ''); do
     cp $f $d
     continue
   fi
-  echo "Rotate $f -> $d"
+  t=/tmp/image
+  echo "Rotate $f -> $t"
+  convert "$f" -auto-orient "$t"
+  echo "Resize $t -> $d"
   mkdir -p $(dirname "$d")
-  convert "$f" -auto-orient "$d"
+  convert "$t" -resize ${ORIG_SIZE}x${ORIG_SIZE}^  "$d"
 done
 
 # STEP 2, resize and compress
