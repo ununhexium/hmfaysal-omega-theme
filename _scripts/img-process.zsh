@@ -21,6 +21,8 @@ for d in $(find . -mindepth 1 -maxdepth 1 -not -name 'orig' -not -name 'scale' -
   cp -ruv "$d" src
 done
 
+MAX_FILE_SIZE=8000000
+MAX_MEMORY_SIZE=512MiB
 
 # STEP 1: Rotate all images using EXIF data
 cd "$SRC/src"
@@ -28,6 +30,12 @@ STEP=orig
 for f in $(find . -type f -iname '*.jpg' -o -iname ''); do
   d="../$STEP/$f"
   if [[ -f "$d" ]]; then
+    continue
+  fi
+  # skip big files on dell mini
+  s=$(wc -c < "$f")
+  if [[ $s -ge $MAX_FILE_SIZE ]]; then
+    echo Skip $f too big: $s
     continue
   fi
   echo "Rotate $f -> $d"
@@ -44,6 +52,12 @@ for f in $(find . -type f -iname '*.jpg'); do
   if [[ -f "$d" ]]; then
     continue
   fi
+  # skip big files on dell mini
+  s=$(wc -c < "$f")
+  if [[ $s -ge $MAX_FILE_SIZE ]]; then
+    echo Skip $f too big: $s
+    continue
+  fi
   echo "Resize $f -> $d"
   mkdir -p $(dirname "$d")
   convert "$f" -resize ${SIZE}x${SIZE}^  "$d"
@@ -56,6 +70,12 @@ for SIZE in 16 32 64 128 256; do
   for f in $(find . -type f -iname '*.jpg' ! -path './pano/*'); do
     d="../$STEP/$SIZE/$f"
     if [[ -f "$d" ]]; then
+      continue
+    fi
+    # skip big files on dell mini
+    s=$(wc -c < "$f")
+    if [[ $s -ge $MAX_FILE_SIZE ]]; then
+      echo Skip $f too big: $s
       continue
     fi
     echo "Iconize $f -> $d"
