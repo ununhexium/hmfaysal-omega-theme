@@ -24,11 +24,12 @@ done
 MAX_FILE_SIZE=13000000
 MAX_MEMORY_SIZE=512MiB
 ORIG_SIZE=1000
+QUALITY=85
 
 # STEP 1: Rotate all images using EXIF data
 cd "$SRC/src"
 STEP=orig
-for f in $(find . -type f -iname '*.jpg' -o -iname ''); do
+for f in $(find . -type f -iname '*.jpg'); do
   d="../$STEP/$f"
   if [[ -f "$d" ]]; then
     continue
@@ -45,7 +46,7 @@ for f in $(find . -type f -iname '*.jpg' -o -iname ''); do
   convert "$f" -auto-orient "$t"
   echo "Resize $t -> $d"
   mkdir -p $(dirname "$d")
-  convert "$t" -resize ${ORIG_SIZE}x${ORIG_SIZE}^  "$d"
+  convert "$t" -resize ${ORIG_SIZE}x${ORIG_SIZE}^ -quality $QUALITY "$d"
 done
 
 # STEP 2, resize and compress
@@ -65,7 +66,7 @@ for f in $(find . -type f -iname '*.jpg'); do
   fi
   echo "Resize $f -> $d"
   mkdir -p $(dirname "$d")
-  convert "$f" -resize ${SIZE}x${SIZE}^  "$d"
+  convert "$f" -resize ${SIZE}x${SIZE}^ -quality $QUALITY "$d"
 done
 
 # STEP 3, icons
@@ -85,7 +86,7 @@ for SIZE in 16 32 64 128 256; do
     fi
     echo "Iconize $f -> $d"
     mkdir -p $(dirname "$d")
-    convert "$f" -resize ${SIZE}x${SIZE}^ -gravity center -extent ${SIZE}x${SIZE} "$d"
+    convert "$f" -resize ${SIZE}x${SIZE}^ -gravity center -extent ${SIZE}x${SIZE} -quality $QUALITY "$d" &
   done
 done
 
