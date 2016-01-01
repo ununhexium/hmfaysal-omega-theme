@@ -8,6 +8,7 @@ headline:
 modified: 2015-05-30
 category: travel
 tags:
+ - france
  - michel
  - mont saint michel
 location:

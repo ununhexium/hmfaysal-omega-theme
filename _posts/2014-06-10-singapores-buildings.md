@@ -8,6 +8,7 @@ headline:
 modified: 2014-06-10
 category: travel
 tags:
+ - singapore
  - buildings
  - architecture
 location: 

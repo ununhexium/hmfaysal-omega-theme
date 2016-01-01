@@ -7,7 +7,9 @@ description: Marina Bay Sands and its gardens
 headline: Republik Singapura, 新加坡共和国, சிங்கப்பூர் குடியரசு 
 modified: 2014-06-11
 category: travel
-tags: []
+tags: 
+ - singapore
+ - marina bay
 location:
  name: Marina Bay Sands, Singapore
 imagefeature: sg/marina_bay_sands_2.jpg

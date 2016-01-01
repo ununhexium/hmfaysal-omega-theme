@@ -8,10 +8,11 @@ headline:
 modified: 2015-05-29
 category: travel
 tags:
- - Saint Malo
- - Malo
- - Britany
- - Bretagne
+ - france
+ - saint malo
+ - malo
+ - britany
+ - bretagne
 location:
  name: Saint Malô, France
 imagefeature: fr/stmalo/muraille.jpg

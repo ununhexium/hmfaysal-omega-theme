@@ -8,6 +8,7 @@ headline:
 modified: 2014-06-12
 category: travel
 tags:
+ - singapore
  - clarke quay
  - china town
 location:
