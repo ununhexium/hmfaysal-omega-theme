@@ -32,6 +32,7 @@ def defaults()
   defaults[:location]=Hash["name" => "north pole"]
   defaults[:imagefeature]=""
   defaults[:comments]="true"
+  defaults[:published]="true"
   defaults
 end
 
