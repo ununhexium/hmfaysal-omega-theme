@@ -176,6 +176,12 @@ function initializeGoogleMaps() {
 
   var roadmap_data = new Array();
   var future_roadmap_data = new Array();
+  var marker = null;
+  var pos = null;
+  var red_cross = new google.maps.MarkerImage('{{ site.baseurl }}/images/misc/red_cross.png',
+                                              new google.maps.Size(32, 32),
+                                              new google.maps.Point(0, 0),
+                                              new google.maps.Point(17, 17));
 
   {% capture nowunix %}{{'now' | date: '%Y-%m-%d-%H'}}{% endcapture %}
   {% for post in site.posts reversed %}
@@ -183,8 +189,27 @@ function initializeGoogleMaps() {
     {% if post.location.lat and post.location.lng %}
       {% if posttime < nowunix %}
         roadmap_data.push(new google.maps.LatLng({{ post.location.lat }}, {{ post.location.lng }}));
+        pos = { lat: {{ post.location.lat }}, lng:{{ post.location.lng }} };
+        var picture = new google.maps.MarkerImage('{{ site.baseurl }}/images/icon/32/{{ post.imagefeature }}',
+                                                  new google.maps.Size(32, 32),
+                                                  new google.maps.Point(0, 0),
+                                                  new google.maps.Point(15, 15));
+        marker = new google.maps.Marker({
+          position: pos,
+          map: g.roadmap,
+          icon: picture,
+          url: "{{ post.url }}"
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+          window.location.href = this.url;
+        });
       {% else %}
-        future_roadmap_data.push(new google.maps.LatLng({{ post.location.lat }}, {{ post.location.lng }}));
+        pos = { lat: {{ post.location.lat }}, lng:{{ post.location.lng }} };
+        marker = new google.maps.Marker({
+          position: pos,
+          map: g.roadmap,
+          icon: red_cross,
+        });
       {% endif %}
     {% endif %}
     /* {{ post.title }}  {{ posttime }} < {{ nowunix }} */
@@ -208,22 +233,7 @@ function initializeGoogleMaps() {
 
   console.debug(roadmap_data);
 
-  var future_path = new google.maps.Polyline({
-    path: future_roadmap_data,
-    geodesic: true,
-    strokeColor: '#ff0000',
-    strokeOpacity: 1.0,
-    strokeWeight: 2,
-    icons: [{
-      icon: lineSymbol,
-      offset: '0',
-      repeat: '20px'
-    }]
-  });
-
   path.setMap(g.roadmap);
-  future_path.setMap(g.roadmap);
-
   
   /*
    * Refresh the roadmap on the first click on it.

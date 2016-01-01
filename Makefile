@@ -35,6 +35,7 @@ clean:
 img: img-get img-process
 
 img-get:
+	mount | grep hubic || hubicfuse ~/.hubicmount -o noauto_cache,sync_read
 	mkdir -p "$(IMG_LOCAL)"
 	rsync $(RSYNC_OPT) $(IMG_REMOTE) $(IMG_LOCAL)
 

@@ -49,6 +49,15 @@ for f in $(find . -type f -iname '*.jpg'); do
   convert "$t" -resize ${ORIG_SIZE}x${ORIG_SIZE}^ -quality $QUALITY "$d"
 done
 
+for f in $(find . -type f -iname '*.png'); do
+  d="../$STEP/$f"
+  if [[ -f "$d" ]]; then
+    continue
+  fi
+  echo $f
+  cp "$f" "$d"
+done
+
 # STEP 2, resize and compress
 SIZE=500
 STEP=scale
@@ -69,6 +78,14 @@ for f in $(find . -type f -iname '*.jpg'); do
   convert "$f" -resize ${SIZE}x${SIZE}^ -quality $QUALITY "$d"
 done
 
+for f in $(find . -type f -iname '*.png'); do
+  d="../$STEP/$f"
+  if [[ -f "$d" ]]; then
+    continue
+  fi
+  cp "$f" "$d"
+done
+
 # STEP 3, icons
 cd "$SRC/orig"
 for SIZE in 16 32 64 128 256; do
@@ -86,7 +103,7 @@ for SIZE in 16 32 64 128 256; do
     fi
     echo "Iconize $f -> $d"
     mkdir -p $(dirname "$d")
-    convert "$f" -resize ${SIZE}x${SIZE}^ -gravity center -extent ${SIZE}x${SIZE} -quality $QUALITY "$d" &
+    convert "$f" -resize ${SIZE}x${SIZE}^ -gravity center -extent ${SIZE}x${SIZE} -quality $QUALITY "$d"
   done
 done
 
