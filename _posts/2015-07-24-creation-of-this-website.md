@@ -25,18 +25,16 @@ This web site was born on a rainy day of July 2015, somewhere in Germany. The we
   <a href="/images/de/bho/pink_wide.jpg"><img src="/images/scale/de/bho/pink_wide.jpg"/></a>
 </figure>
 
-<figure class="quarter">
+<figure class="third">
   <a href="/images/de/bho/rays.jpg"><img src="/images/scale/de/bho/rays.jpg"/></a>
   <a href="/images/de/bho/orange.jpg"><img src="/images/scale/de/bho/orange.jpg"/></a>
-  <a href="/images/de/bho/pink_sheeps.jpg"><img src="/images/scale/de/bho/pink_sheeps.jpg"/></a>
   <a href="/images/de/bho/pink.jpg"><img src="/images/scale/de/bho/pink.jpg"/></a>
 </figure>
 
-<figure class="quarter">
+<figure class="third">
   <a href="/images/de/bho/burn.jpg"><img src="/images/scale/de/bho/burn.jpg"/></a>
   <a href="/images/de/bho/horizon_ray.jpg"><img src="/images/scale/de/bho/horizon_ray.jpg"/></a>
   <a href="/images/de/bho/hikoukigumo.jpg"><img src="/images/scale/de/bho/hikoukigumo.jpg"/></a>
-  <a href="/images/de/bho/X.jpg"><img src="/images/scale/de/bho/X.jpg"/></a>
 </figure>
 
 <figure class="quarter">

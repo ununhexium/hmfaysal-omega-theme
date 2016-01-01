@@ -198,6 +198,7 @@ function initializeGoogleMaps() {
           position: pos,
           map: g.roadmap,
           icon: picture,
+          title: "{{ post.title }}",
           url: "{{ post.url }}"
         });
         google.maps.event.addListener(marker, 'click', function() {
