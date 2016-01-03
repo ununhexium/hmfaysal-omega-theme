@@ -11,7 +11,6 @@ RSYNC_OPT=--no-perms --no-owner --no-group --verbose --recursive --update
 default: info
 	@echo 
 	@echo "all:      clean, img, build, upload"
-	@echo "build:    builds the web site"
 	@echo "clean:    removes generated files"
 	@echo "img:      fetches images from hubic and puts them in the $(DIR)/images folder"
 	@echo "info:     displays the above information"
@@ -20,9 +19,6 @@ default: info
 	@echo "upload:   uploads the website to $(SERVER)"
 
 all: clean upload
-
-build:
-	cd $(DIR); jekyll build
 
 clean:
 	cd $(DIR); rm -rf _site
@@ -56,9 +52,9 @@ put-img:
 serve: server
 
 server:
-	cd $(DIR); jekyll server --config "$(DIR)/_config.yml,$(DIR)/_config.local.yml" --host $(IP) --baseurl ''
+	cd $(DIR); jekyll server --incremental --config "$(DIR)/_config.yml,$(DIR)/_config.local.yml" --host $(IP) --baseurl ''
 
-upload: img build
+upload: img
 	@echo Clean and rebuild with the prod config
 	cd $(DIR); rm -rf _site
 	cd $(DIR); jekyll build

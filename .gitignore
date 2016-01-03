@@ -3,4 +3,5 @@ images
 _plugins/jekyll_geocache.json
 .sass-cache/
 _src_images/
+.jekyll-metadata
 

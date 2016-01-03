@@ -64,6 +64,11 @@
             {% endfor %}
             <li><a href="{{ site.url }}/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss"></i> Feed</a></li>
         </ul>
+        <div>
+          {% if site.revolvermapid %}
+          <script type="text/javascript" src="//ra.revolvermaps.com/0/0/3.js?i={{ site.revolvermapid }}&amp;b=0&amp;s=32&amp;m=2&amp;cl=ffffff&amp;co=010020&amp;cd=aa0000&amp;v0=60&amp;v1=60&amp;r=0" async="async"></script>
+          {% endif %}
+        </div>
         </div>
     </div>
     {% if site.animated_fins and site.triangleheader %}
