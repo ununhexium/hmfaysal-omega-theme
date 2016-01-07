@@ -50,6 +50,7 @@ put-img:
 	rsync $(RSYNC_OPT) $(IMG_LOCAL) $(IMG_REMOTE)
 
 serve: server
+	echo e
 
 server:
 	cd $(DIR); jekyll server --incremental --config "$(DIR)/_config.yml,$(DIR)/_config.local.yml" --host $(IP) --baseurl ''
