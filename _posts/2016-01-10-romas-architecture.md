@@ -13,7 +13,7 @@ tags:
  - rome
  - architecture
 location:
- name: Roma, Italy
+ name: Trevi, Roma, Italy
 imagefeature: it/roma/trevi.jpg
 comments: true
 published: true

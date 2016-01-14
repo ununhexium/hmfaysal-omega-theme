@@ -13,7 +13,7 @@ tags:
  - rome
  - antiquity
 location:
- name: Roma, Italy
+ name: Coloseo, Roma, Italy
 imagefeature: it/roma/colosoe_wide.jpg
 comments: true
 published: true

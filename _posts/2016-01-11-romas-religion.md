@@ -13,7 +13,7 @@ tags:
  - roma
  - religion
 location:
- name: Roma, Italy
+ name: Vatican city, Roma, Italy
 imagefeature: it/roma/st_pierre.jpg
 comments: true
 published: true
