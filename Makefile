@@ -22,10 +22,6 @@ all: clean upload
 
 clean:
 	cd $(DIR); rm -rf _site
-	cd $(DIR); rm -rf images
-	cd $(DIR); rm -rf $(IMG_LOCAL)/src
-	cd $(DIR); rm -rf $(IMG_LOCAL)/scale 
-	cd $(DIR); rm -rf $(IMG_LOCAL)/icon
 	cd $(DIR)/_plugins; rm -f jekyll_geocache.json
 
 img: img-get img-process
