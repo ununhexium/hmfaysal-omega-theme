@@ -13,7 +13,7 @@ tags:
  - rome
  - architecture
 location:
- name: Trevi, Roma, Italy
+ name: Fontana di trevi, Roma, Italia
 imagefeature: it/roma/trevi.jpg
 comments: true
 published: true
