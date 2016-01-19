@@ -56,5 +56,5 @@ upload: img
 	cd $(DIR); rm -rf _site
 	cd $(DIR); jekyll build
 	@echo Upload to $(SERVER_USER)@$(SERVER)
-	rsync -vr $(DIR)/_site/ $(SERVER_USER)@$(SERVER):/home/$(SERVER_USER)/html/
+	rsync -vrz $(DIR)/_site/ $(SERVER_USER)@$(SERVER):/home/$(SERVER_USER)/html/
 
