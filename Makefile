@@ -5,6 +5,7 @@ IMG_LOCAL=$(DIR)/_src_images/
 SERVER=lab0.net
 SERVER_USER=ununhexium
 include env
+DATETIME=$(shell date '+%Y-%m-%d_%H-%M')
 
 RSYNC_OPT=--no-perms --no-owner --no-group --verbose --recursive --update
 
@@ -19,6 +20,10 @@ default: info
 	@echo "upload:   uploads the website to $(SERVER)"
 
 all: clean upload
+
+backup:
+	echo $(DATETIME)
+	rsync -arv $(DIR)/_site/ $(HOME)/backup/blog/$(DATETIME)
 
 clean:
 	cd $(DIR); rm -rf _site
