@@ -11,7 +11,6 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
   location = data['location'] rescue nil # unencode
 
   if location and location['name'] and ( not location['lat'] or not location['lon'])
-    puts location.inspect
     loc = GEO_CACHE[location['name']]
     unless loc
       puts "geocoding... #{location['name']}"
