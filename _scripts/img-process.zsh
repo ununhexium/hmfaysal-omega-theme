@@ -21,7 +21,7 @@ for d in $(find . -mindepth 1 -maxdepth 1 -not -name 'orig' -not -name 'scale' -
   cp -ruv "$d" src
 done
 
-MAX_FILE_SIZE=13000000
+MAX_FILE_SIZE=17000000
 MAX_MEMORY_SIZE=512MiB
 ORIG_SIZE=1000
 QUALITY=85

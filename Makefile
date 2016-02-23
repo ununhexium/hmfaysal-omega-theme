@@ -60,9 +60,9 @@ upload: img
 	@echo Clean and rebuild with the prod config
 	cd $(DIR); rm -rf _site
 	cd $(DIR); jekyll build
-	ssh ununhexium@lab0.net "rm /home/ununhexium/html/assets/css/background.css"
-	ssh ununhexium@lab0.net "rm /home/ununhexium/html/roadmap/index.html"
-	ssh ununhexium@lab0.net "rm /home/ununhexium/html/timeline/index.html"
+	ssh ununhexium@lab0.net "rm /home/ununhexium/html/assets/css/background.css" || echo
+	ssh ununhexium@lab0.net "rm /home/ununhexium/html/roadmap/index.html" || echo
+	ssh ununhexium@lab0.net "rm /home/ununhexium/html/timeline/index.html" || echo
 	@echo Upload to $(SERVER_USER)@$(SERVER)
 	rsync -vrz $(DIR)/_site/ $(SERVER_USER)@$(SERVER):/home/$(SERVER_USER)/html/
 
