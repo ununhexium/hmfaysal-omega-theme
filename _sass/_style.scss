@@ -569,6 +569,17 @@ html {
 .newer-posts {
   left: 0;
 }
+.prevnextpost{
+  width: 100%;
+}
+.prevnextpost > .next{
+  right:0;
+  float: right;
+}
+.prevnextpost > .prev{
+  left:0;
+}
+
 @media (max-width: 480px) {
   .older-posts,
   .newer-posts {
