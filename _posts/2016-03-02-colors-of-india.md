@@ -3,7 +3,7 @@ id: 1457283479
 title: Colors of India
 layout: post
 type: photo
-description: Photoshop
+description: Rainbow
 headline: 
 modified: 2016-03-02
 category: travel
@@ -12,7 +12,7 @@ tags:
  - colors
 location:
  name: India
-imagefeature: 
+imagefeature: in/colors/rainbow2.jpg
 comments: true
 published: true
 
@@ -30,9 +30,13 @@ published: true
   <figcaption></figcaption>
 </figure>
 
-<figure class="third">
+<figure class="half">
   <a href="/images/in/colors/match1.jpg"><img src="/images/scale/in/colors/match1.jpg"/></a>
-  <a href="/images/in/colors/match2.jpg"><img src="/images/scale/in/colors/match2.jpg"/></a>
   <a href="/images/in/colors/white.jpg"><img src="/images/scale/in/colors/white.jpg"/></a>
+  <figcaption></figcaption>
+</figure>
+
+<figure class="">
+  <a href="/images/in/colors/qutub.jpg"><img src="/images/scale/in/colors/qutub.jpg"/></a>
   <figcaption></figcaption>
 </figure>
